@@ -4,6 +4,7 @@
 #include <sstream>
 #include "../createvuejs/cvuejs.cpp"
 #include "../tailwind/addtailwindvue.cpp"
+#include "../vueComponents/addShadcn.cpp"
 
 std::vector<std::string> splitString(const std::string &str, char delimiter)
 {
@@ -39,6 +40,14 @@ void handle(std::string argument)
             {
                 std::cout << "Adding tailwind to Vue.js project..." << std::endl;
                 addTailwindToVueJs(projectName);
+            }
+        }
+        else if (arguments[i] == "shadcn")
+        {
+            if (arguments[0] == "vuejs")
+            {
+                std::cout << "Adding Shadcn to Vue.js project..." << std::endl;
+                addShadcnToVueJs(projectName);
             }
         }
         else if (arguments[i] == "run")
