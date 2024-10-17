@@ -6,17 +6,17 @@
 
 void createVueJsProject(std::string projectName)
 {
-    std::filesystem::create_directory(projectName);
-    std::filesystem::create_directories(projectName + "/src");
-    std::filesystem::create_directories(projectName + "/public");
-    std::filesystem::create_directories(projectName + "/src/assets");
-    std::filesystem::create_directories(projectName + "/src/components");
-    std::filesystem::create_directories(projectName + "/src/components/icons");
-    // create a .gitignore file
-    std::ofstream gitignoreFile(projectName + "/.gitignore");
-    if (gitignoreFile.is_open())
-    {
-        gitignoreFile << R"(
+  std::filesystem::create_directory(projectName);
+  std::filesystem::create_directories(projectName + "/src");
+  std::filesystem::create_directories(projectName + "/public");
+  std::filesystem::create_directories(projectName + "/src/assets");
+  std::filesystem::create_directories(projectName + "/src/components");
+  std::filesystem::create_directories(projectName + "/src/components/icons");
+  // create a .gitignore file
+  std::ofstream gitignoreFile(projectName + "/.gitignore");
+  if (gitignoreFile.is_open())
+  {
+    gitignoreFile << R"(
 # Logs
 logs
 *.log
@@ -48,16 +48,16 @@ coverage
 
 *.tsbuildinfo
 )";
-    }
-    else
-    {
-        std::cerr << "Error: Unable to create .gitignore file" << std::endl;
-    }
-    // create a index.html file
-    std::ofstream indexHtmlFile(projectName + "/index.html");
-    if (indexHtmlFile.is_open())
-    {
-        indexHtmlFile << R"(
+  }
+  else
+  {
+    std::cerr << "Error: Unable to create .gitignore file" << std::endl;
+  }
+  // create a index.html file
+  std::ofstream indexHtmlFile(projectName + "/index.html");
+  if (indexHtmlFile.is_open())
+  {
+    indexHtmlFile << R"(
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -78,16 +78,16 @@ coverage
   </body>
 </html>
 )";
-    }
-    else
-    {
-        std::cerr << "Error: Unable to create index.html file" << std::endl;
-    }
-    // create a jsconfig.json file
-    std::ofstream jsconfigJsonFile(projectName + "/jsconfig.json");
-    if (jsconfigJsonFile.is_open())
-    {
-        jsconfigJsonFile << R"(
+  }
+  else
+  {
+    std::cerr << "Error: Unable to create index.html file" << std::endl;
+  }
+  // create a jsconfig.json file
+  std::ofstream jsconfigJsonFile(projectName + "/jsconfig.json");
+  if (jsconfigJsonFile.is_open())
+  {
+    jsconfigJsonFile << R"(
 {
   "compilerOptions": {
     "paths": {
@@ -97,16 +97,16 @@ coverage
   "exclude": ["node_modules", "dist"]
 }
 )";
-    }
-    else
-    {
-        std::cerr << "Error: Unable to create jsconfig.json file" << std::endl;
-    }
-    // create a package.json file
-    std::ofstream packageJsonFile(projectName + "/package.json");
-    if (packageJsonFile.is_open())
-    {
-        packageJsonFile << R"(
+  }
+  else
+  {
+    std::cerr << "Error: Unable to create jsconfig.json file" << std::endl;
+  }
+  // create a package.json file
+  std::ofstream packageJsonFile(projectName + "/package.json");
+  if (packageJsonFile.is_open())
+  {
+    packageJsonFile << R"(
 {
   "name": "package.json",
   "version": "0.0.0",
@@ -127,27 +127,36 @@ coverage
   }
 }
 )";
-    }
-    else
-    {
-        std::cerr << "Error: Unable to create package.json file" << std::endl;
-    }
-    // create a README.md file
-    std::ofstream readmeMdFile(projectName + "/README.md");
-    if (readmeMdFile.is_open())
-    {
-        readmeMdFile << R"(
-# This project is created with Genesis CLI ;))";
-    }
-    else
-    {
-        std::cerr << "Error: Unable to create README.md file" << std::endl;
-    }
-    // create a vite config file
-    std::ofstream viteConfigFile(projectName + "/vite.config.js");
-    if (viteConfigFile.is_open())
-    {
-        viteConfigFile << R"(
+  }
+  else
+  {
+    std::cerr << "Error: Unable to create package.json file" << std::endl;
+  }
+  // create a README.md file
+  std::ofstream readmeMdFile(projectName + "/README.md");
+  if (readmeMdFile.is_open())
+  {
+    readmeMdFile << "# " + projectName + R"(
+# How to run
+1. Clone the repository
+`git clone Repository_link`
+2. Install the dependencies
+`npm install`
+3. Run the development server
+`npm run dev`
+
+## Project Was Generated Using Genesis －O－
+)";
+  }
+  else
+  {
+    std::cerr << "Error: Unable to create README.md file" << std::endl;
+  }
+  // create a vite config file
+  std::ofstream viteConfigFile(projectName + "/vite.config.js");
+  if (viteConfigFile.is_open())
+  {
+    viteConfigFile << R"(
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
@@ -160,16 +169,16 @@ export default defineConfig({
   ],
 })
 )";
-    }
-    else
-    {
-        std::cerr << "Error: Unable to create vite.config.js file" << std::endl;
-    }
-    // create a mainjs file
-    std::ofstream mainjs(projectName + "/src/main.js");
-    if (mainjs.is_open())
-    {
-        mainjs << R"(
+  }
+  else
+  {
+    std::cerr << "Error: Unable to create vite.config.js file" << std::endl;
+  }
+  // create a mainjs file
+  std::ofstream mainjs(projectName + "/src/main.js");
+  if (mainjs.is_open())
+  {
+    mainjs << R"(
 import './assets/main.css'
 
 import { createApp } from 'vue'
@@ -177,15 +186,15 @@ import App from './App.vue'
 
 createApp(App).mount('#app')
 )";
-    }
-    else
-    {
-        std::cerr << "Error: Unable to create main.js file " << std::endl;
-    }
-    std::ofstream appvue(projectName + "/src/App.vue");
-    if (appvue.is_open())
-    {
-        appvue << R"(
+  }
+  else
+  {
+    std::cerr << "Error: Unable to create main.js file " << std::endl;
+  }
+  std::ofstream appvue(projectName + "/src/App.vue");
+  if (appvue.is_open())
+  {
+    appvue << R"(
 <script setup>
 </script>
 
@@ -206,21 +215,21 @@ createApp(App).mount('#app')
 </style>
         
 )";
-    }
-    else
-    {
-        std::cerr << "Error: Unable to create App.vue file " << std::endl;
-    }
-    std::ofstream maincss(projectName + "/src/assets/main.css");
-    if (maincss.is_open())
-    {
-        maincss << R"(
+  }
+  else
+  {
+    std::cerr << "Error: Unable to create App.vue file " << std::endl;
+  }
+  std::ofstream maincss(projectName + "/src/assets/main.css");
+  if (maincss.is_open())
+  {
+    maincss << R"(
 /* You can customize this file */
 )";
-    }
-    else
-    {
-        std::cerr << "Error: Unable to create main.css file " << std::endl;
-    }
-    std::cout << "Project created successfully!" << std::endl;
+  }
+  else
+  {
+    std::cerr << "Error: Unable to create main.css file " << std::endl;
+  }
+  std::cout << "Project created successfully!" << std::endl;
 }
